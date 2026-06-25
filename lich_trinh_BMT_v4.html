@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hành Trình Lãnh Đạo Tâm Thức – Buôn Ma Thuột 3N2Đ</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dark:#1a120b;
+  --brown:#3d2314;
+  --gold:#c9933a;
+  --light-gold:#e8c27c;
+  --cream:#f9f3ea;
+  --text:#2c1d11;
+  --muted:#6b5744;
+  --line:#d4b896;
+}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--cream);color:var(--text);line-height:1.7}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,var(--dark) 0%,var(--brown) 100%);color:#fff;padding:60px 24px 44px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:url('https://cdn.xanhsm.com/2024/12/c716598b-bao-tang-the-gioi-ca-phe.jpg') center/cover;opacity:.13;pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:780px;margin:0 auto}
+.badge{display:inline-block;background:var(--gold);color:var(--dark);font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-size:clamp(20px,4.5vw,34px);font-weight:700;line-height:1.25;color:var(--light-gold);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.hero p{font-size:13.5px;color:#ddd;margin-bottom:26px;font-style:italic}
+.hero-meta{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.meta-item .val{font-size:22px;font-weight:700;color:var(--gold);display:block}
+.meta-item .lbl{font-size:10px;color:#bbb;text-transform:uppercase;letter-spacing:1px}
+
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+
+/* INTRO */
+.intro{background:#fff;border-left:5px solid var(--gold);padding:20px 26px;margin:28px auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.06);max-width:860px}
+.intro h2{font-size:14px;font-weight:700;color:var(--brown);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.intro p{font-size:13px;color:var(--muted)}
+
+/* FLIGHT BOX */
+.flight-box{background:var(--brown);color:#fff;padding:18px 24px;border-radius:6px;max-width:860px;margin:0 auto 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.flight-icon{font-size:28px;flex-shrink:0}
+.flight-info h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--light-gold);margin-bottom:5px}
+.flight-info p{font-size:12px;color:#ddd;line-height:1.6}
+.flight-price{margin-left:auto;text-align:right;flex-shrink:0}
+.flight-price .price{font-size:18px;font-weight:700;color:var(--gold)}
+.flight-price .note{font-size:10px;color:#bbb}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:32px;max-width:860px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--brown),var(--gold))}
+
+.day-label{position:relative;margin:32px 0 18px -32px;display:inline-flex;align-items:center;gap:10px;background:var(--brown);color:var(--gold);padding:9px 20px 9px 14px;border-radius:4px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+.day-label::after{content:'';position:absolute;right:-10px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-left-color:var(--brown)}
+.day-num{background:var(--gold);color:var(--dark);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
+
+.card{position:relative;background:#fff;border-radius:8px;margin-bottom:26px;box-shadow:0 2px 14px rgba(0,0,0,.07);overflow:hidden}
+.card::before{content:'';position:absolute;left:-32px;top:24px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid #fff;box-shadow:0 0 0 3px var(--brown)}
+
+/* MAIN IMAGE */
+.card-img-wrap{position:relative;overflow:hidden}
+.card-img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .card-img{transform:scale(1.03)}
+.time-chip{position:absolute;bottom:10px;left:12px;background:rgba(26,18,11,.88);color:var(--light-gold);font-size:10.5px;font-weight:700;padding:4px 12px;border-radius:20px}
+.source-chip{position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.55);color:#ccc;font-size:9px;padding:3px 8px;border-radius:10px}
+
+/* THUMBNAIL STRIP */
+.thumb-strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;background:var(--dark)}
+.thumb-item{position:relative;overflow:hidden;cursor:pointer}
+.thumb-item img{width:100%;height:90px;object-fit:cover;display:block;transition:transform .3s,opacity .3s;opacity:.85}
+.thumb-item:hover img{transform:scale(1.08);opacity:1}
+.thumb-caption{position:absolute;bottom:0;left:0;right:0;background:rgba(26,18,11,.75);color:var(--light-gold);font-size:9px;padding:3px 6px;text-align:center;line-height:1.3;font-weight:600;letter-spacing:.3px}
+
+/* CARD BODY */
+.card-body{padding:18px 22px}
+.card-title{font-size:16px;font-weight:700;color:var(--brown);margin-bottom:5px}
+.tq-chip{display:inline-flex;align-items:center;gap:5px;background:var(--cream);border-left:3px solid var(--gold);padding:3px 10px;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:12px;border-radius:0 4px 4px 0}
+.card-desc{font-size:12.5px;color:#555;line-height:1.75;margin-bottom:14px}
+.info-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.info-tag{background:#f0ece4;border:1px solid var(--line);border-radius:20px;font-size:10.5px;color:var(--muted);padding:3px 11px;font-weight:600}
+.lesson{background:#f5f0e8;border-radius:6px;padding:13px 16px;margin-bottom:12px;border-left:3px solid var(--gold)}
+.lesson h4{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--brown);font-weight:700;margin-bottom:7px}
+.lesson p{font-size:12px;color:var(--text);line-height:1.65}
+.discuss{background:var(--brown);border-radius:6px;padding:13px 16px}
+.discuss h4{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--light-gold);font-weight:700;margin-bottom:7px}
+.discuss ul{list-style:none;padding:0}
+.discuss li{font-size:12px;color:#e0cfb8;padding:3px 0;padding-left:14px;position:relative;line-height:1.6}
+.discuss li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+
+/* HOTEL */
+.hotel-block{background:var(--dark);color:#fff;border-radius:8px;overflow:hidden;margin-bottom:26px;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.hotel-img-wrap{position:relative;overflow:hidden}
+.hotel-img{width:100%;height:240px;object-fit:cover;display:block;opacity:.88}
+.hotel-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.7));padding:14px 18px}
+.hotel-tag-small{display:inline-block;background:var(--gold);color:var(--dark);font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 9px;border-radius:20px;text-transform:uppercase;margin-bottom:4px}
+.hotel-name-overlay{font-size:16px;font-weight:700;color:#fff}
+.hotel-body{padding:16px 22px}
+.hotel-desc{font-size:12.5px;color:#c8b89a;line-height:1.7;margin-bottom:14px}
+.hotel-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.feature{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;font-size:10.5px;color:#ddd;padding:3px 10px}
+.room-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.room-card{background:rgba(255,255,255,.05);border:1px solid rgba(201,147,58,.25);border-radius:6px;padding:13px;text-align:center}
+.room-card .rname{font-size:11.5px;font-weight:700;color:var(--light-gold);margin-bottom:4px}
+.room-card .rprice{font-size:17px;font-weight:700;color:var(--gold)}
+.room-card .rnote{font-size:9.5px;color:#aaa;margin-top:2px}
+
+.day-divider{text-align:center;padding:10px 0;color:var(--muted);font-size:10.5px;letter-spacing:2px;text-transform:uppercase}
+.day-divider::before,.day-divider::after{content:'— '}
+
+/* BUDGET */
+.budget-section{max-width:860px;margin:36px auto}
+.section-title{font-size:17px;font-weight:700;color:var(--brown);border-bottom:2px solid var(--gold);padding-bottom:9px;margin-bottom:20px;text-transform:uppercase}
+.budget-note{background:#fff8e8;border-left:4px solid var(--gold);padding:11px 15px;border-radius:4px;font-size:12px;color:#5a4000;margin-bottom:18px;line-height:1.6}
+table{width:100%;border-collapse:collapse;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.07);border-radius:6px;overflow:hidden}
+thead tr{background:var(--brown)}
+th{padding:12px 14px;text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--light-gold)}
+td{padding:12px 14px;font-size:12px;border-bottom:1px solid #eee}
+tr:nth-child(even) td{background:#faf6f0}
+.price-cell{font-weight:700;color:var(--brown);white-space:nowrap}
+.total-row td{background:#f5efe0!important;font-weight:700;font-size:13px;color:var(--brown)}
+.total-row .price-cell{color:var(--gold);font-size:14.5px}
+.update-note{font-size:10.5px;color:var(--muted);text-align:right;margin-top:8px;font-style:italic}
+
+footer{background:var(--dark);color:#777;text-align:center;padding:28px 20px;font-size:10.5px;margin-top:50px}
+footer span{color:var(--gold)}
+
+@media(max-width:580px){
+  .room-grid{grid-template-columns:1fr}
+  .timeline{padding-left:22px}
+  .card::before{left:-22px}
+  .day-label{margin-left:-22px}
+  .thumb-item img{height:70px}
+  .flight-price{margin-left:0;width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="badge">Chương Trình Nội Bộ Doanh Nghiệp</div>
+    <h1>Hành Trình Tâm Thức Lãnh Đạo<br>Buôn Ma Thuột</h1>
+    <p>Học hỏi qua trải nghiệm thực tế · Chiêm nghiệm trong thiên nhiên đại ngàn · Trao đổi dưới góc nhìn người dẫn dắt</p>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="val">3</span><span class="lbl">Ngày</span></div>
+      <div class="meta-item"><span class="val">2</span><span class="lbl">Đêm</span></div>
+      <div class="meta-item"><span class="val">6</span><span class="lbl">Địa điểm</span></div>
+      <div class="meta-item"><span class="val">BMV</span><span class="lbl">Sân bay hạ cánh</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="intro">
+    <h2>Triết lý thiết kế hành trình</h2>
+    <p>Mỗi địa điểm là một bài học quản trị gắn với lịch sử và văn hoá Tây Nguyên. Đội ngũ quan sát, thảo luận và rút ra góc nhìn ứng dụng vào công việc thực tế. Thời gian chụp ảnh và thư giãn được bố trí xen kẽ có chủ đích — đủ để nạp lại năng lượng mà không làm loãng trải nghiệm học hỏi.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="flight-box">
+    <div class="flight-icon">✈</div>
+    <div class="flight-info">
+      <h3>Di chuyển đến Buôn Ma Thuột</h3>
+      <p><strong>Sân bay:</strong> Buôn Ma Thuột (BMV) · Cách trung tâm ~8km · 15 phút<br>
+      <strong>Bay thẳng:</strong> TP.HCM ~1h · Hà Nội ~1h45 · Đà Nẵng ~1h<br>
+      <strong>Hãng:</strong> Vietnam Airlines · Vietjet Air · Pacific Airlines</p>
+    </div>
+    <div class="flight-price">
+      <div class="price">1,8M – 2,5M VNĐ</div>
+      <div class="note">khứ hồi / người (đã gồm thuế)</div>
+    </div>
+  </div>
+</div>
+
+<div class="timeline wrap">
+
+  <!-- NGÀY 1 -->
+  <div class="day-label"><div class="day-num">1</div>Ngày 1: Tầm Nhìn Đổi Mới & Cân Bằng Tâm Thức</div>
+
+  <!-- Card 1.1: Bảo Tàng Cà Phê -->
+  <div class="card">
+    <div class="card-img-wrap">
+      <img class="card-img"
+        src="https://cdn.xanhsm.com/2024/12/c716598b-bao-tang-the-gioi-ca-phe.jpg"
+        alt="Bảo Tàng Thế Giới Cà Phê – 5 khối nhà dài uốn cong biểu tượng Tây Nguyên">
+      <div class="time-chip">14:00 – 16:30 · Ngày 1</div>
+      <div class="source-chip">Ảnh: Green SM</div>
+    </div>
+    <!-- 3 ảnh nhỏ -->
+    <div class="thumb-strip">
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/131980d3-bao-tang-the-gioi-ca-phe-25.jpg"
+          alt="Bảo tàng nhìn từ trên cao">
+        <div class="thumb-caption">Nhìn từ trên cao</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/44410969-bao-tang-the-gioi-ca-phe-3.jpg"
+          alt="Đường vào Bảo tàng Thế Giới Cà Phê">
+        <div class="thumb-caption">Đường vào bảo tàng</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/78d1f5ae-bao-tang-the-gioi-ca-phe-1.jpg"
+          alt="Vị trí tọa lạc Bảo tàng Cà phê BMT">
+        <div class="thumb-caption">Vị trí tọa lạc</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Bảo Tàng Thế Giới Cà Phê</div>
+      <div class="tq-chip">Tố chất: Tầm Nhìn Đổi Mới (Visionary Innovation)</div>
+      <div class="info-row">
+        <span class="info-tag">163 Nguyễn Đình Chiểu, P. Tân Lợi, BMT</span>
+        <span class="info-tag">Mở 7:00–17:45</span>
+        <span class="info-tag">Vé 150K (kèm cốc cà phê)</span>
+      </div>
+      <p class="card-desc">Công trình 5 khối nhà dài Ê-đê uốn cong, khánh thành 2018 bởi Trung Nguyên Legend. Lưu giữ <strong>10.000+ hiện vật</strong> từ 3 nền văn minh: Ottoman – Roman – Thiền. Warner Bros đánh giá là "bảo tàng độc nhất vô nhị". Ánh sáng 14:00–16:30 đẹp nhất để chụp ảnh ngoài trời.</p>
+      <div class="lesson">
+        <h4>Bài học lãnh đạo</h4>
+        <p>Đặng Lê Nguyên Vũ mất <strong>13 năm</strong> thuyết phục để thu về 10.000 hiện vật từ nhà sưu tập Jens Burg (Đức). Tầm nhìn không có giới hạn địa lý và thời gian — cách người dẫn dắt vĩ đại xây dựng di sản.</p>
+      </div>
+      <div class="discuss">
+        <h4>Thảo luận nhóm</h4>
+        <ul>
+          <li>Điều gì tạo nên sự khác biệt giữa "mục tiêu" và "sứ mệnh" trong cách bạn dẫn dắt team?</li>
+          <li>Nếu xây một "bảo tàng" về văn hóa team, 3 hiện vật nào sẽ được trưng bày?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 1.2: Chùa Khải Đoan -->
+  <div class="card">
+    <div class="card-img-wrap">
+      <img class="card-img"
+        src="https://cdn.xanhsm.com/2024/12/75aae878-chua-sac-tu-khai-doan-thumb.jpg"
+        alt="Chùa Sắc Tứ Khải Đoan – gỗ lim cổ kính nâu vàng">
+      <div class="time-chip">16:45 – 17:45 · Ngày 1</div>
+      <div class="source-chip">Ảnh: Green SM</div>
+    </div>
+    <div class="thumb-strip">
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/7cfc1e6c-chua-sac-tu-khai-doan-2.jpg"
+          alt="Không gian chùa nhìn từ cổng">
+        <div class="thumb-caption">Nhìn từ cổng vào</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/a9e60b22-chua-sac-tu-khai-doan-3.jpg"
+          alt="Không gian mang màu sắc Tây Nguyên">
+        <div class="thumb-caption">Không gian Tây Nguyên</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/60a52dd4-chua-sac-tu-khai-doan-4.jpg"
+          alt="Chánh điện thờ Phật Thích Ca">
+        <div class="thumb-caption">Chánh điện thờ Phật</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Chùa Sắc Tứ Khải Đoan</div>
+      <div class="tq-chip">Tố chất: Cân Bằng Tâm Thức (Contemplative Leadership)</div>
+      <div class="info-row">
+        <span class="info-tag">117 Phan Bội Châu, P. Thống Nhất, BMT</span>
+        <span class="info-tag">Mở 6:00–19:00</span>
+        <span class="info-tag">Miễn phí</span>
+      </div>
+      <p class="card-desc">Ngôi chùa cuối cùng được phong Sắc Tứ triều Nguyễn (1953). Do <strong>Thái hậu Hoàng Thị Cúc</strong> (mẹ vua Bảo Đại) khởi xướng từ 1951. Kiến trúc gỗ lim kết hợp nhà rường Huế và nhà sàn Ê-đê — tone nâu vàng trầm ấm. Hoàng hôn là lúc không gian đạt tĩnh mịch cao nhất, lý tưởng chụp áo dài.</p>
+      <div class="lesson">
+        <h4>Bài học lãnh đạo</h4>
+        <p>Quyết định tốt nhất đến từ trạng thái tĩnh lặng — không phải từ sự hối hả. Người lãnh đạo hiệu quả cần có "khoảng trống" trong lịch làm việc dày đặc.</p>
+      </div>
+      <div class="discuss">
+        <h4>Thảo luận nhóm</h4>
+        <ul>
+          <li>Trong công việc, bạn tìm thấy "sự tĩnh lặng" ở đâu? Nó có thật sự tồn tại không?</li>
+          <li>Làm thế nào duy trì sự bình tĩnh khi team đang chịu áp lực lớn?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-divider">Kết thúc Ngày 1 · Nghỉ đêm tại khách sạn trung tâm Buôn Ma Thuột</div>
+
+  <!-- NGÀY 2 -->
+  <div class="day-label"><div class="day-num">2</div>Ngày 2: Triết Lý Cộng Sinh & Tầm Nhìn Cao Nguyên</div>
+
+  <!-- Card 2.1: Buôn Đôn -->
+  <div class="card">
+    <div class="card-img-wrap">
+      <img class="card-img"
+        src="https://cdn.xanhsm.com/2024/12/b78b8f99-cau-treo-buon-don-dak-lak-thumb.jpg"
+        alt="Cầu treo Buôn Đôn – tán si cổ thụ, sông Sêrêpôk">
+      <div class="time-chip">08:00 – 11:30 · Ngày 2 · 45km ~1 giờ</div>
+      <div class="source-chip">Ảnh: Green SM</div>
+    </div>
+    <div class="thumb-strip">
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/14bcc29a-cau-treo-buon-don-dak-lak-01.jpg"
+          alt="Khu du lịch cầu treo Buôn Đôn toàn cảnh">
+        <div class="thumb-caption">Khu du lịch toàn cảnh</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/f924f8a5-cau-treo-buon-don-dak-lak-02.jpg"
+          alt="Cầu treo Buôn Đôn trên bản đồ">
+        <div class="thumb-caption">Vị trí trên bản đồ</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/f20e5e49-cau-treo-buon-don-dak-lak-03.jpg"
+          alt="Lịch sử hình thành cầu treo Buôn Đôn">
+        <div class="thumb-caption">Hành trình lịch sử</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Khu Du Lịch Buôn Đôn — Nhà Sàn Cổ & Cầu Treo Sêrêpôk</div>
+      <div class="tq-chip">Tố chất: Thuần Dưỡng & Thu Phục Lòng Người (Coexistence Wisdom)</div>
+      <div class="info-row">
+        <span class="info-tag">Xã Krông Na, H. Buôn Đôn, Đắk Lắk</span>
+        <span class="info-tag">Mở 7:00–18:00</span>
+        <span class="info-tag">Vé 40.000 VNĐ/người</span>
+      </div>
+      <p class="card-desc">Thủ phủ huyền thoại <strong>Vua Voi Y Thu Knul</strong> — được vua Xiêm La nể phục, được vua Bảo Đại tặng gươm quý. Nhà sàn cổ 130 tuổi (1883). Cầu treo tre nứa ~500m qua sông Sêrêpôk dưới bóng si cổ thụ — concept ảnh Bohemian/thổ cẩm cho chị em.</p>
+      <div class="lesson">
+        <h4>Bài học lãnh đạo</h4>
+        <p>Người Buôn Đôn không <em>chế ngự</em> voi rừng — họ <em>thuần dưỡng và cộng sinh</em>. Thu phục bằng sự thấu hiểu, không phải bằng quyền lực.</p>
+      </div>
+      <div class="discuss">
+        <h4>Thảo luận nhóm</h4>
+        <ul>
+          <li>Bạn đang "thuần dưỡng" hay "kiểm soát" những người trong team mình?</li>
+          <li>Kể về 1 lần bạn hiểu sai một thành viên và điều đó thay đổi cách bạn dẫn dắt họ?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2.2: Hồ Lắk + Biệt điện -->
+  <div class="card">
+    <div class="card-img-wrap">
+      <img class="card-img"
+        src="https://cdn.xanhsm.com/2024/12/37209b5f-ho-lak-dak-lak-thumb.jpg"
+        alt="Hồ Lắk Đắk Lắk – mặt hồ xanh trong, núi rừng bao quanh">
+      <div class="time-chip">13:30 – 17:30 · Ngày 2 · Buôn Đôn → Hồ Lắk ~55km</div>
+      <div class="source-chip">Ảnh: Green SM</div>
+    </div>
+    <div class="thumb-strip">
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/b8bc3aa8-ho-lak-dak-lak-2.jpg"
+          alt="Hồ Lắk nhìn từ trên cao, xanh biếc giữa đại ngàn">
+        <div class="thumb-caption">Hồ Lắk từ trên cao</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/4ae7c77e-biet-dien-bao-dai-thumb.jpg"
+          alt="Biệt điện Bảo Đại giữa lòng đại ngàn Tây Nguyên">
+        <div class="thumb-caption">Biệt điện Bảo Đại</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/af2b0a62-biet-dien-bao-dai-1.jpg"
+          alt="Biệt điện Bảo Đại tọa lạc tại trung tâm TP Buôn Ma Thuột">
+        <div class="thumb-caption">Vị trí biệt điện</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Hồ Lắk · Biệt Điện Bảo Đại & Di chuyển đến Lắk Tented Camp</div>
+      <div class="tq-chip">Tố chất: Tầm Nhìn Chiến Lược Người Đứng Đầu (Strategic Foresight)</div>
+      <div class="info-row">
+        <span class="info-tag">TT. Liên Sơn, H. Lắk, Đắk Lắk · 56km từ BMT</span>
+        <span class="info-tag">Vé biệt điện 10.000 VNĐ</span>
+        <span class="info-tag">Thuyền độc mộc 150K/2 người</span>
+      </div>
+      <p class="card-desc"><strong>Biệt điện Bảo Đại</strong> (1951) trên đồi cao 422m, tầm nhìn panorama 360° bao trọn hồ 500ha. Hoàng hôn Hồ Lắk là một trong những cảnh đẹp nhất Tây Nguyên. Sau đó di chuyển bằng thuyền sang <strong>Lắk Tented Camp</strong> nghỉ đêm.</p>
+      <div class="lesson">
+        <h4>Bài học lãnh đạo</h4>
+        <p>Bảo Đại chọn đồi cao nhìn bao quát toàn hồ không phải để kiểm soát — mà để suy nghĩ dài hạn. Người lãnh đạo cần biết cách "leo lên đồi" để nhìn thấy toàn cảnh.</p>
+      </div>
+      <div class="discuss">
+        <h4>Thảo luận nhóm (buổi tối tại hồ)</h4>
+        <ul>
+          <li>Khi nào lần cuối bạn thực sự thoát khỏi công việc để nhìn lại bức tranh lớn?</li>
+          <li>3 điều bạn muốn thay đổi trong cách team vận hành — nếu bắt đầu lại từ đầu?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-divider">Nghỉ đêm tại Lắk Tented Camp · Tiếp cận bằng thuyền</div>
+
+  <!-- HOTEL BLOCK -->
+  <div class="hotel-block">
+    <div class="hotel-img-wrap">
+      <img class="hotel-img"
+        src="https://www.laktentedcamp.com/wp-content/uploads/2021/11/SMM9876.jpg"
+        alt="Lắk Tented Camp – nhà gỗ view hồ Lắk">
+      <div class="hotel-overlay">
+        <div class="hotel-tag-small">Chỗ nghỉ đề xuất – Đêm 2</div>
+        <div class="hotel-name-overlay">Lắk Tented Camp — Eco Lodge Trên Hồ</div>
+      </div>
+    </div>
+    <!-- 3 ảnh nhỏ hotel -->
+    <div class="thumb-strip">
+      <div class="thumb-item">
+        <img src="https://www.laktentedcamp.com/wp-content/uploads/2021/11/Lakefront-Wooden-Bungalow-7-600x388.jpg"
+          alt="Lakefront Wooden Bungalow nội thất sang trọng">
+        <div class="thumb-caption">Nhà gỗ ven hồ</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://www.laktentedcamp.com/wp-content/uploads/2021/11/Phong-canh-LAK-Tented-Camp-landscape-15-600x388.jpg"
+          alt="Toàn cảnh Lắk Tented Camp nhìn từ xa">
+        <div class="thumb-caption">Toàn cảnh resort</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://www.laktentedcamp.com/wp-content/uploads/2021/11/Bungalow-exterior-600x388.jpg"
+          alt="Bungalow ngoại thất view hồ ban công">
+        <div class="thumb-caption">Bungalow & ban công</div>
+      </div>
+    </div>
+    <div class="hotel-body">
+      <p class="hotel-desc">15 nhà lều sinh thái + 4 nhà gỗ cao cấp trên sườn đồi nhìn thẳng ra Hồ Lắk. <strong>Chỉ tiếp cận bằng thuyền</strong>. Nhà gỗ có phòng khách, bồn tắm, minibar và ban công view hồ. Nhà hàng Y Lak là ngôi nhà dài M'nông cổ với sân ăn ngoài trời sát mặt nước. Đặt trước ít nhất 2 tuần và báo giờ đến để resort sắp thuyền đón.</p>
+      <div class="hotel-features">
+        <span class="feature">View hồ 180°</span>
+        <span class="feature">Ban công riêng</span>
+        <span class="feature">Đến bằng thuyền</span>
+        <span class="feature">Farm-to-table</span>
+        <span class="feature">Kayak · Đạp xe</span>
+        <span class="feature">Eco · Solar</span>
+      </div>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="rname">Nhà Lều Sinh Thái<br>(Lakeview Tent)</div>
+          <div class="rprice">~1.800.000 VNĐ</div>
+          <div class="rnote">/ đêm / phòng · 2 người</div>
+        </div>
+        <div class="room-card">
+          <div class="rname">⭐ Nhà Gỗ Ven Hồ<br>(Lakefront Bungalow)</div>
+          <div class="rprice">~3.500.000 VNĐ</div>
+          <div class="rnote">/ đêm · Bồn tắm · Minibar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NGÀY 3 -->
+  <div class="day-label"><div class="day-num">3</div>Ngày 3: Bản Sắc Cộng Đồng & Mua Sắm Di Sản</div>
+
+  <!-- Card 3.1: Buôn Akô Dhong -->
+  <div class="card">
+    <div class="card-img-wrap">
+      <img class="card-img"
+        src="https://cdn.xanhsm.com/2024/12/7328cebf-buon-co-thon-dak-lak-thumb.jpg"
+        alt="Buôn Akô Dhong – nhà dài Ê-đê xanh mướt trong lòng phố">
+      <div class="time-chip">08:30 – 10:30 · Ngày 3 · Di chuyển ~55km từ Hồ Lắk</div>
+      <div class="source-chip">Ảnh: Green SM</div>
+    </div>
+    <div class="thumb-strip">
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/1d431de5-buon-co-thon-dak-lak-2.jpg"
+          alt="Nhà dài Ê-đê đặc trưng tại Buôn Akô Dhong">
+        <div class="thumb-caption">Nhà dài Ê-đê cổ</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/223a5535-buon-co-thon-dak-lak-3.jpg"
+          alt="Cổng chào Buôn Akô Dhong hiện đại">
+        <div class="thumb-caption">Cổng chào buôn làng</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/3c67171e-buon-co-thon-dak-lak-1.jpg"
+          alt="Vị trí Buôn Cô Thôn trên bản đồ">
+        <div class="thumb-caption">Vị trí trên bản đồ</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Buôn Akô Dhong (Buôn Cô Thôn)</div>
+      <div class="tq-chip">Tố chất: Bản Sắc & Kế Thừa (Identity & Legacy)</div>
+      <div class="info-row">
+        <span class="info-tag">Phường Tân Lợi, BMT · Cách trung tâm ~2km</span>
+        <span class="info-tag">Miễn phí · Mở cả ngày</span>
+      </div>
+      <p class="card-desc">Buôn làng Ê-đê đẹp và kiểu mẫu nhất lòng thành phố. "Ako Dhong" trong tiếng Ê-đê nghĩa là thung lũng đầu nguồn. <strong>Nhà dài truyền thống</strong> hàng trăm năm, xen lẫn quán cà phê thung lũng mộc mạc. Phù hợp chụp ảnh Bohemian, dệt thổ cẩm, nghe cồng chiêng.</p>
+      <div class="lesson">
+        <h4>Bài học lãnh đạo</h4>
+        <p>Qua hàng trăm năm đô thị hóa, Buôn Akô Dhong vẫn giữ nhà dài và tập tục — không bằng cách "chống lại" thay đổi, mà bằng cách xây dựng <em>bản sắc đủ mạnh để tồn tại song song.</em></p>
+      </div>
+      <div class="discuss">
+        <h4>Thảo luận nhóm</h4>
+        <ul>
+          <li>Điều gì làm nên "bản sắc" của team bạn mà người ngoài nhìn vào là nhận ra ngay?</li>
+          <li>Điều gì cần giữ nguyên và điều gì cần thay đổi trong 6 tháng tới?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3.2: Mua sắm -->
+  <div class="card">
+    <div class="card-img-wrap">
+      <img class="card-img"
+        src="https://cdn.xanhsm.com/2024/12/c716598b-bao-tang-the-gioi-ca-phe.jpg"
+        alt="Mua sắm đặc sản cà phê Buôn Ma Thuột">
+      <div class="time-chip">11:00 – 13:30 · Ngày 3 · Ra sân bay BMV chiều</div>
+    </div>
+    <div class="thumb-strip">
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/131980d3-bao-tang-the-gioi-ca-phe-25.jpg"
+          alt="Cà phê đặc sản Buôn Ma Thuột">
+        <div class="thumb-caption">Cà phê đặc sản BMT</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://cdn.xanhsm.com/2024/12/1d431de5-buon-co-thon-dak-lak-2.jpg"
+          alt="Thổ cẩm Ê-đê làm quà lưu niệm">
+        <div class="thumb-caption">Thổ cẩm Ê-đê</div>
+      </div>
+      <div class="thumb-item">
+        <img src="https://www.laktentedcamp.com/wp-content/uploads/2021/11/Elephant-interaction-600x388.jpg"
+          alt="Kỷ niệm hành trình Tây Nguyên">
+        <div class="thumb-caption">Kỷ niệm hành trình</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Mua Sắm Đặc Sản & Nghi Thức Kết Thúc Hành Trình</div>
+      <div class="tq-chip">Trải nghiệm: Mang Hương Vị Đại Ngàn Về Nhà</div>
+      <p class="card-desc">Thời gian tự do chọn quà: <strong>Cà phê nguyên chất · Cà phê chồn đặc biệt · Mật ong rừng Tây Nguyên · Tiêu rừng · Thổ cẩm Ê-đê</strong>. Để lại 30 phút cuối ăn nhẹ và chia sẻ kỷ niệm trước khi ra sân bay.</p>
+      <div class="lesson">
+        <h4>Nghi thức kết thúc hành trình</h4>
+        <p>Trước khi vào cổng sân bay — mỗi thành viên chia sẻ <strong>1 điều học được</strong> và <strong>1 điều sẽ áp dụng ngay</strong> khi về. Ghi lại vào nhóm chat làm cam kết chung của đội ngũ.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BUDGET -->
+<div class="wrap budget-section">
+  <h2 class="section-title">Dự Toán Ngân Sách Chi Tiết – 1 Người</h2>
+  <div class="budget-note">
+    <strong>Giá thực tế 6/2026:</strong> Lắk Tented Camp nhà gỗ ~3.5M VNĐ/phòng/đêm (TripAdvisor 1/2026 ~150 USD). Vé bay TP.HCM khứ hồi từ 1.8M VNĐ (Vietjet Air, đặt sớm). Giá lưu trú 900K–1.4M ở bản cũ là ước tính thấp hơn thực tế đáng kể.
+  </div>
+  <table>
+    <thead><tr>
+      <th>Hạng mục</th>
+      <th>Chi tiết</th>
+      <th>Nhà Lều</th>
+      <th>Nhà Gỗ ⭐</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Vé máy bay khứ hồi</strong></td>
+        <td>TP.HCM/HAN/DAD → BMV · đặt trước 2–3 tuần</td>
+        <td class="price-cell">1.800.000</td>
+        <td class="price-cell">2.500.000</td>
+      </tr>
+      <tr>
+        <td><strong>Lưu trú 2 đêm</strong></td>
+        <td>Đêm 1: KS 4 sao BMT · Đêm 2: Lắk Tented Camp (2 người/phòng)</td>
+        <td class="price-cell">1.800.000</td>
+        <td class="price-cell">3.500.000</td>
+      </tr>
+      <tr>
+        <td><strong>Xe di chuyển 3 ngày</strong></td>
+        <td>Van 9–16 chỗ: sân bay · BMT→Buôn Đôn→Hồ Lắk</td>
+        <td class="price-cell">500.000</td>
+        <td class="price-cell">600.000</td>
+      </tr>
+      <tr>
+        <td><strong>Thuyền vào Lắk Camp</strong></td>
+        <td>Khứ hồi · bao gồm khi đặt phòng</td>
+        <td class="price-cell">Bao gồm</td>
+        <td class="price-cell">Bao gồm</td>
+      </tr>
+      <tr>
+        <td><strong>Ẩm thực 3 ngày</strong></td>
+        <td>Đặc sản Tây Nguyên + cà phê bảo tàng + nhà hàng Y Lak</td>
+        <td class="price-cell">1.300.000</td>
+        <td class="price-cell">1.800.000</td>
+      </tr>
+      <tr>
+        <td><strong>Vé tham quan</strong></td>
+        <td>Bảo tàng 150K · Buôn Đôn 40K · Biệt điện 10K · Thuyền độc mộc 150K</td>
+        <td class="price-cell">350.000</td>
+        <td class="price-cell">400.000</td>
+      </tr>
+      <tr>
+        <td><strong>Mua sắm & linh tinh</strong></td>
+        <td>Cà phê, mật ong, thổ cẩm, quà lưu niệm</td>
+        <td class="price-cell">300.000</td>
+        <td class="price-cell">500.000</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="2"><strong>TỔNG DỰ TOÁN / NGƯỜI</strong></td>
+        <td class="price-cell">~6.050.000</td>
+        <td class="price-cell">~9.300.000</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="update-note">Cập nhật tháng 6/2026 · Giá thay đổi theo thời điểm đặt và số lượng đoàn · Đặt sớm để có giá tốt nhất</p>
+</div>
+
+<footer>
+  <p>Tài liệu lưu hành nội bộ — Hành Trình Lãnh Đạo Tâm Thức Buôn Ma Thuột 3N2Đ</p>
+  <p style="margin-top:6px">Ảnh thực tế: <span>Green SM / cdn.xanhsm.com · Lắk Tented Camp Official (laktentedcamp.com)</span></p>
+  <p style="margin-top:4px">Dữ liệu giá: Vietnam Airlines · Vietjet Air · Trip.com · TripAdvisor 2026</p>
+</footer>
+
+</body>
+</html>
